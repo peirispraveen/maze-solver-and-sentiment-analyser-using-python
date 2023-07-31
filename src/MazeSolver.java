@@ -3,13 +3,13 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class MazeSolver {
-    private char[][] maze;
+    private char[][] maze;  // Represents the maze
     private int rows;
     private int cols;
-    private int startRow;
-    private int startCol;
-    private int endRow;
-    private int endCol;
+    private int startRow;  // Starting row of S
+    private int startCol;  // Starting column of S
+    private int endRow;  // Ending row of E
+    private int endCol;  // Ending column of E
 
     public MazeSolver(String fileName) {
         parseMazeFile(fileName);
@@ -26,10 +26,10 @@ public class MazeSolver {
             while (line != null) {
                 for (int col = 0; col < cols; col++) {
                     maze[row][col] = line.charAt(col);
-                    if (maze[row][col] == 'S') {
+                    if (maze[row][col] == 'S') {  // Scanning the starting point
                         startRow = row;
                         startCol = col;
-                    } else if (maze[row][col] == 'E') {
+                    } else if (maze[row][col] == 'E') {  // Scanning the ending point
                         endRow = row;
                         endCol = col;
                     }
@@ -42,7 +42,7 @@ public class MazeSolver {
         }
     }
 
-    public void printMaze() { // This will print the maze
+    public void printMaze() { // This will print the current view of the maze
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 System.out.print(maze[i][j]);
@@ -67,7 +67,7 @@ public class MazeSolver {
     }
 
     private boolean findPath(MazeStack stack, int row, int col, boolean[][] visited) {
-        if (!isValid(row, col) || visited[row][col] || maze[row][col] == '#') {
+        if (!isValid(row, col) || visited[row][col] || maze[row][col] == '#') {  // Validity of boundaries
             return false;
         }
 
@@ -93,7 +93,7 @@ public class MazeSolver {
         return false;
     }
 
-    private boolean isValid(int row, int col) {
+    private boolean isValid(int row, int col) {  // Check if the rows and columns are valid
         return row >= 0 && row < rows && col >= 0 && col < cols;
     }
 
