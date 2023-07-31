@@ -98,7 +98,8 @@ public class MazeSolver {
     }
 
     public static void main(String[] args) {
-        MazeSolver mazeSolver = new MazeSolver("maze2.txt");
+        MazeSolver mazeSolver = new MazeSolver("maze6.txt");
+        System.out.println();
         mazeSolver.printMaze();
         mazeSolver.solveMaze();
         mazeSolver.printMaze(); // Print the modified maze with the path highlighted
